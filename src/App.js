@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import NewTransaction from './Components/NewTransaction/NewTransaction'
+import EditTransaction from './Components/EditTransaction/EditTransaction'
+import Transactions from './Components/Transactions/Transactions'
+import Transaction from './Components/Transactions/Transaction'
+import Nav from './Components/Nav/Nav'
+
+import "./App.css"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/transactions/:id" element={<Transaction />} />
+        <Route path="/transactions/new" element={<NewTransaction/>}/>
+        <Route path="/transactions/:id/edit" element={<EditTransaction/>}  />
+      </Routes>
+    </Router>
+  )
 }
 
-export default App;
+export default App
